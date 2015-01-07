@@ -5,7 +5,7 @@ feature 'photos' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos'
-      expect(page).to have_button 'Add a photo'
+      expect(page).to have_content 'Add a photo'
     end
   end
 	context 'photos have been added' do
@@ -23,9 +23,9 @@ feature 'photos' do
 	context 'creating photos' do
 		scenario 'prompts user to fill out a form, then displays the new photo' do
 		  visit '/photos'
-		  click_button 'Add a photo'
+		  click_link 'Add a photo'
 		  fill_in 'Name', with: 'Food'
-		  click_button 'Create Food'
+		  click_button 'Create Photo'
 		  expect(page).to have_content 'Food'
 		  expect(current_path).to eq '/photos'
 		end
