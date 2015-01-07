@@ -8,7 +8,7 @@ feature 'photos' do
       expect(page).to have_button 'Add a photo'
     end
   end
-	context 'photos have been added' do
+context 'photos have been added' do
 
 	  before do
 	    Photo.create(name: 'Food')

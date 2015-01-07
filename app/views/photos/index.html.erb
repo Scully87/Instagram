@@ -1,2 +1,8 @@
-No photos
-<button type="submit">Add a photo</button>
+<% if Photo.all.any? %>
+	<% Photo.all.each do |photo| %>
+		<%= photo.name %>
+	<% end %>
+<% else %>
+	<h1>No photos</h1>
+	<button type="submit">Add a photo</button>
+<% end %>
