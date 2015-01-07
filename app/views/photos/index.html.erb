@@ -1,5 +1,5 @@
 <% if Photo.all.any? %>
-	<% Photo.all.each do |photo| %>
+	<% @photos.all.each do |photo| %>
 		<%= photo.name %>
 	<% end %>
 <% else %>
