@@ -1,25 +1,25 @@
 class PhotosController < ApplicationController
 
-	def index
-		@photos = Photo.all
-	end
+  def index
+    @photos = Photo.all
+  end
 
-	def new
-		@photo = Photo.new
-	end
+  def new
+    @photo = Photo.new
+  end
 
-	def create
-		Photo.create(photo_params)
+  def create
+    Photo.create(photo_params)
     redirect_to '/photos'
-	end
+  end
 
-	def show
+  def show
     @photo = Photo.find(params[:id])
   end
 
-	def edit
-		@photo = Photo.find(params[:id])
-	end
+  def edit
+    @photo = Photo.find(params[:id])
+  end
 
   def update
     @photo = Photo.find(params[:id])
@@ -28,15 +28,15 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-  	@photo = Photo.find(params[:id])
-  	@photo.destroy
-  	flash[:notice] = 'Photo deleted'
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = 'Photo deleted'
     redirect_to '/photos'
   end
 
-	private
-		def photo_params
-    	params.require(:photo).permit(:name)
-  	end
-	
+  private
+    def photo_params
+      params.require(:photo).permit(:name)
+    end
+  
 end
