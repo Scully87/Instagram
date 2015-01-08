@@ -23,6 +23,8 @@ class PhotosController < ApplicationController
     redirect_to '/photos'
   end
 
+  
+
 	private
 		def photo_params
     	params.require(:photo).permit(:name)
