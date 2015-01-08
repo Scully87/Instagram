@@ -11,8 +11,15 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
-    redirect_to '/photos'
+    @photo = Photo.new(photo_params)
+    @post.user_id = current_user.id
+    if @photo.save
+      redirect_to photos_path
+    else @photo.delete
+      flash[:notice] = 'Error! Photo has already been created'
+      redirect_to photos_path
+    end
+
   end
 
   def show
