@@ -19,7 +19,6 @@ class PhotosController < ApplicationController
 
 	def edit
 		@photo = Photo.find(params[:id])
-		redirect_to photos_path
 	end
 
   def update
