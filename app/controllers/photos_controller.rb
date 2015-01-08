@@ -23,7 +23,8 @@ class PhotosController < ApplicationController
     redirect_to '/photos'
   end
 
-  
+  def destroy
+  end
 
 	private
 		def photo_params
