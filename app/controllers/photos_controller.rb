@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    @post.user_id = current_user.id
+    @photo.user_id = current_user.id
     if @photo.save
       redirect_to photos_path
     else @photo.delete
