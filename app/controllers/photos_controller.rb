@@ -19,7 +19,6 @@ class PhotosController < ApplicationController
       flash[:notice] = 'Error! Photo has already been created'
       redirect_to photos_path
     end
-
   end
 
   def show
