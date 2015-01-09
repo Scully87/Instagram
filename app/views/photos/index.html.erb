@@ -1,8 +1,10 @@
 <% if Photo.all.any? %>
 	<% @photos.all.each do |photo| %>
 		<%= photo.name %>
-		<%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
-		<%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %>
+    <% if current_user && current_user.id == photo.user_id %>
+  		<%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
+  		<%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %>
+    <% end %>
 	<% end %>
 <% else %>
 	<h1>No photos</h1>

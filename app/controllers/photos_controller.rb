@@ -22,24 +22,30 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    redirect_to photos_path
   end
 
   def edit
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = 'You cannot edit this - please try again!'
+    redirect_to photos_path
   end
 
   def update
     @photo = Photo.find(params[:id])
     @photo.update(photo_params)
-    redirect_to '/photos'
+    redirect_to photos_path
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
     @photo.destroy
-    flash[:notice] = 'Photo deleted'
-    redirect_to '/photos'
+    flash[:notice] = 'Photo deleted successfully'
+    redirect_to photo_path
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = 'You cannot delete this!'
+    redirect_to photos_path
   end
 
   private
