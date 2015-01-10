@@ -47,13 +47,13 @@ feature 'photos' do
       
       before {Photo.create name: 'Food'}
 
-  scenario 'let a user edit a photo' do
-     visit '/photos'
-     click_link 'Edit Food'
-     fill_in 'Name', with: 'Mega Foodz'
-     click_button 'Update Photo'
-     expect(page).to have_content 'Mega Foodz'
-     expect(current_path).to eq '/photos'
+    scenario 'let a user edit a photo' do
+      visit '/photos'
+      click_link 'Edit Food'
+      fill_in 'Name', with: 'Mega Foodz'
+      click_button 'Update Photo'
+      expect(page).to have_content 'Mega Foodz'
+      expect(current_path).to eq '/photos'
     end
   end
 
