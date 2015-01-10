@@ -11,6 +11,14 @@ feature 'photos' do
     click_button('Sign up')
   end
 
+  def create_post
+    sign_up
+    visit('/')
+    click_link('Add a photo')
+    fill_in('Name', with: 'Food')
+    click_button('Create Photo')
+  end
+
   context 'no photos have been added' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
@@ -31,7 +39,6 @@ feature 'photos' do
   end
 
   context 'creating photos' do
-
     scenario 'prompts user to fill out a form, then displays the new photo' do
       sign_up
       visit '/photos'
@@ -44,10 +51,8 @@ feature 'photos' do
   end
 
   context 'editing photos' do
-      
-      before {Photo.create name: 'Food'}
-
     scenario 'let a user edit a photo' do
+      create_post
       visit '/photos'
       click_link 'Edit Food'
       fill_in 'Name', with: 'Mega Foodz'
@@ -58,22 +63,8 @@ feature 'photos' do
   end
 
   context 'deleting photos' do
-      
-    before {Photo.create name: 'Food'}
-
     scenario 'removes a photo when a user clicks a delete link' do
-      visit '/photos'
-      click_link 'Delete Food'
-      expect(page).not_to have_content 'Food'
-      expect(page).to have_content 'Photo deleted'
-    end
-  end
-
-  context 'deleting photos' do
-
-    before {Photo.create name: 'Food'}
-
-    scenario 'removes a photo when a user clicks a delete link' do
+      create_post
       visit '/photos'
       click_link 'Delete Food'
       expect(page).not_to have_content 'Food'
