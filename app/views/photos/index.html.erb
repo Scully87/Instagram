@@ -3,7 +3,7 @@
 		<%= photo.name %>
     <%= time_ago_in_words(photo.created_at)%> Ago
     <span class="likes_count"><%= photo.likes.count %></span> Likes
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.id != photo.user_id %>
       <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
     <% end %>
     <% if current_user && current_user.id == photo.user_id %>
