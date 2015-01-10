@@ -18,8 +18,8 @@ feature 'liking photos' do
     expect(page).to_not have_content 'Like'
   end
 
-  sceanrio 'users can like each photo once', js: true do
-    visit '/'
+  scenario 'users can like each photo once', js: true do
+    create_post
     click_link 'Like'
     click_link 'Like'
     expect(page).to have_content '1 like'
