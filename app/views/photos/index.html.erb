@@ -2,6 +2,9 @@
 	<% @photos.all.each do |photo| %>
 		<%= photo.name %>
     <%= time_ago_in_words(photo.created_at)%> Ago
+    <%= photo.likes.count %> Likes
+    <% if user_signed_in? %>
+    <% end %>
     <% if current_user && current_user.id == photo.user_id %>
   		<%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
   		<%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %>
