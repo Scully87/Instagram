@@ -1,10 +1,10 @@
-<% if Photo.all.any? %>
-	<% @photos.all.each do |photo| %>
-		<%= photo.name %>
+<% if Photo.any? %>
+	<% @photos.reverse.each do |photo| %>
+		<p><%= photo.name %>
     <%= time_ago_in_words(photo.created_at)%> Ago
     <span class="likes_count"><%= photo.likes.count %></span> Likes
     <% if user_signed_in? && current_user.id != photo.user_id %>
-      <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+      <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %></p>
     <% end %>
     <% if current_user && current_user.id == photo.user_id %>
   		<%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
@@ -14,4 +14,4 @@
 <% else %>
 	<h1>No photos</h1>
 <% end %>
-<a href="/photos/new.html" type="submit">Add a photo</a>
+<%= link_to 'Add a photo', new_photo_path %>
