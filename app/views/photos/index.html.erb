@@ -1,6 +1,7 @@
 <% if Photo.any? %>
 	<% @photos.reverse.each do |photo| %>
 		<p><%= photo.name %>
+    <%= image_tag photo.image.url(:thumb) %>
     <%= time_ago_in_words(photo.created_at)%> Ago
     <span class="likes_count"><%= photo.likes.count %></span> Likes
     <% if user_signed_in? && current_user.id != photo.user_id %>
