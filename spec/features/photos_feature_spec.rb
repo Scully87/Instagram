@@ -63,6 +63,7 @@ feature 'photos' do
       visit '/photos'
       click_link 'Delete Food'
       expect(page).not_to have_content 'Food'
+      expect(page).not_to have_css 'img'
       expect(page).to have_content 'Photo deleted'
     end
   end
