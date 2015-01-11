@@ -5,6 +5,12 @@ include LikesHelper
 
 feature 'liking photos' do
 
+  scenario 'is initially at 0 likes' do
+    create_post
+    visit '/photos'
+    expect(page).to have_content '0 Likes'
+  end
+
   context 'when signed in' do
     before {Photo.create name: 'Food'}
     scenario 'a user can like a photo, which updates the photo like count', js: true do
