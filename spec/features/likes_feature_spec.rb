@@ -13,6 +13,13 @@ feature 'liking photos' do
       click_link 'Like'
       expect(page).to have_content '1 Like'
     end
+    scenario 'users can only like each photo once', js: true do
+      sign_up_first_test_user
+      visit '/photos'
+      click_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content '1 Like'
+    end
   end
 
   scenario 'users cannot like their own photo', js: true do
@@ -21,12 +28,11 @@ feature 'liking photos' do
     expect(page).to_not have_link 'Like'
   end
 
-  scenario 'users can only like each photo once', js: true do
-    visit '/photos'
-    # save_and_open_page
-    click_link 'Like'
-    click_link 'Like'
-    expect(page).to have_content '1 like'
+  context 'when not signed in' do
+    scenario 'users cannot like a photo' do
+      visit '/photos'
+      expect(page).to_not have_link 'Like'
+    end
   end
 
 end
