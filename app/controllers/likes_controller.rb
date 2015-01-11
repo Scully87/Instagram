@@ -1,5 +1,9 @@
 class LikesController < ApplicationController
 
+  def index
+    redirect_to photos_path
+  end
+
   def create
     @photo = Photo.find(params[:photo_id])
     like = @photo.likes.new
