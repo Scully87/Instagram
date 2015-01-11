@@ -14,6 +14,7 @@ module PhotosHelper
     visit('/')
     click_link('Add a photo')
     fill_in('Name', with: 'Food')
+    attach_file('photo[image]', 'spec/features/test.jpg')
     click_button('Create Photo')
   end
 
