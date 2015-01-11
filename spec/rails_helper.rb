@@ -72,4 +72,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  Capybara.server do
+    |app, port| require 'rack/handler/thin'
+    Rack::Handler::Thin.run(app, :Port => port)
+  end
+
 end
