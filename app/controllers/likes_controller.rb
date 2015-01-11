@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     like = @photo.likes.new
     like.user_id = current_user.id
-    WebsocketRails[:likes].trigger 'new'
+    WebsocketRails[:likes].trigger 'new', { new_like_count: @photo.likes.count }
     if like.save
       redirect_to photos_path
     else

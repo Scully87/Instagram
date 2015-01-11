@@ -8,7 +8,6 @@ feature 'liking photos' do
   scenario 'is initially at 0 likes' do
     create_post
     visit '/photos'
-    save_and_open_page
     expect(page).to have_content '♥ 0'
   end
 

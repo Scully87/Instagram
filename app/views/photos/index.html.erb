@@ -3,7 +3,7 @@
 		<p><%= photo.name %>
     <%= image_tag photo.image.url(:thumb) %>
     <%= time_ago_in_words(photo.created_at)%> Ago
-    <%= link_to "♥ #{photo.likes.count}", photo_likes_path(photo) %></p>
+    <%= link_to "♥ #{photo.likes.count}", photo_likes_path(photo), method: :post %></p>
     <% if current_user && current_user.id == photo.user_id %>
   		<%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
   		<%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %>

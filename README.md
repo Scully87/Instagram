@@ -28,3 +28,4 @@ TODO: Creating a Clone of Instagram using Ruby on Rails
 - DotEnv
 - Poltergeist
 - Database Cleaner
+- Thin
