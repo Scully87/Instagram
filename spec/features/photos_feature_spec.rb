@@ -35,8 +35,10 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'Name', with: 'Food'
+      attach_file('photo[image]', 'spec/fixtures/files/test.jpg')
       click_button 'Create Photo'
       expect(page).to have_content 'Food'
+      expect(page).to have_css 'img'
       expect(current_path).to eq '/photos'
     end
   end
