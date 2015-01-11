@@ -49,8 +49,10 @@ feature 'photos' do
       visit '/photos'
       click_link 'Edit Food'
       fill_in 'Name', with: 'Mega Foodz'
+      attach_file('photo[image]', 'spec/fixtures/files/test2.jpg')
       click_button 'Update Photo'
       expect(page).to have_content 'Mega Foodz'
+      expect(page).to have_css 'img'
       expect(current_path).to eq '/photos'
     end
   end
