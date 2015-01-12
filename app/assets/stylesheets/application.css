@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ *{font-family: 'PT Sans', sans-serif;}
+
+body {
+  height: 100%;
+  background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSpFGUOf-duBfG0ZjdZ0gDDKHKY3wv4zO3zDYp6J969x2IwwRFQ');
+  background: no-repeat;
+}
